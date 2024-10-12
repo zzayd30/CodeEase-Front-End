@@ -90,25 +90,25 @@ const Footer = () => {
                   onClick={() => navigate("/About")}
                   className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white cursor-pointer hover:underline items-start -ml-1 text-footer-text"
                 >
-                  <FaAngleRight /> About
+                  <FaAngleRight  className="mt-1" /> About
                 </p>
                 <p
                   onClick={() => navigate("/Contact")}
                   className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white hover:underline cursor-pointer items-start -ml-1 text-footer-text"
                 >
-                  <FaAngleRight /> Contact
+                  <FaAngleRight  className="mt-1" /> Contact
                 </p>
                 <p
                   onClick={() => navigate("/Feature")}
                   className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white hover:underline cursor-pointer items-start -ml-1 text-footer-text"
                 >
-                  <FaAngleRight /> Features
+                  <FaAngleRight  className="mt-1" /> Features
                 </p>
                 <p
                   onClick={() => navigate("/Overview")}
                   className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white hover:underline items-start -ml-1 cursor-pointer text-footer-text"
                 >
-                  <FaAngleRight /> Overview
+                  <FaAngleRight  className="mt-1" /> Overview
                 </p>
               </div>
               <div className="flex lg:max-h-[35vh] flex-col justify-between">
@@ -116,27 +116,27 @@ const Footer = () => {
 
                 <p
                   onClick={() => navigate("/Education")}
-                  className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white cursor-pointer hover:underline items-start -ml-1 text-footer-text"
+                  className="flex gap-4 h-8 text-center hover:text-lg ease-in-out duration-500 hover:text-white cursor-pointer hover:underline items-start -ml-1 text-footer-text"
                 >
-                  <FaAngleRight /> Education
+                  <FaAngleRight className="mt-1" /> Education
                 </p>
                 <p
                   onClick={() => navigate("/Education")}
                   className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white hover:underline cursor-pointer items-start -ml-1 text-footer-text"
                 >
-                  <FaAngleRight /> Businesses
+                  <FaAngleRight  className="mt-1" /> Businesses
                 </p>
                 <p
                   onClick={() => navigate("/Education")}
                   className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white hover:underline cursor-pointer items-start -ml-1 text-footer-text"
                 >
-                  <FaAngleRight /> Health
+                  <FaAngleRight  className="mt-1" /> Health
                 </p>
                 <p
                   onClick={() => navigate("/Education")}
                   className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white hover:underline items-start -ml-1 cursor-pointer text-footer-text"
                 >
-                  <FaAngleRight /> Retail
+                  <FaAngleRight  className="mt-1" /> Retail
                 </p>
               </div>
 
