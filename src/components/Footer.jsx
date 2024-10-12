@@ -121,19 +121,19 @@ const Footer = () => {
                   <FaAngleRight /> Education
                 </p>
                 <p
-                  onClick={() => navigate("/Business")}
+                  onClick={() => navigate("/Education")}
                   className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white hover:underline cursor-pointer items-start -ml-1 text-footer-text"
                 >
                   <FaAngleRight /> Businesses
                 </p>
                 <p
-                  onClick={() => navigate("/Health")}
+                  onClick={() => navigate("/Education")}
                   className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white hover:underline cursor-pointer items-start -ml-1 text-footer-text"
                 >
                   <FaAngleRight /> Health
                 </p>
                 <p
-                  onClick={() => navigate("/Retail")}
+                  onClick={() => navigate("/Education")}
                   className="flex gap-4 h-8 hover:text-lg ease-in-out duration-500 hover:text-white hover:underline items-start -ml-1 cursor-pointer text-footer-text"
                 >
                   <FaAngleRight /> Retail

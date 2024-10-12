@@ -4,14 +4,20 @@ import { motion } from "framer-motion";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdLocationPin } from "react-icons/md";
 import { IoMdMail } from "react-icons/io";
-
+import Hero from '../components/Hero'
+import { useEffect } from "react";
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
 
   return (
+    <>
+    <Hero />
     <div className="p-s ">
       <div className="container py-28 flex flex-col gap-10">
         <div className="flex flex-col gap-10 lg:flex-row">
@@ -189,6 +195,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
