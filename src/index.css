@@ -107,10 +107,14 @@
     max-width: 1320px;
   }
 }
-
+.footer-back {
+  max-width: 1320px;
+  margin: 0px auto;
+}
 .hero-back {
   background: url(./assets//bg-bottom.png) center bottom no-repeat;
   background-color: rgba(22, 22, 156, 0.5);
+  max-width: 1320px;
 }
 
 @keyframes fadeInUp {

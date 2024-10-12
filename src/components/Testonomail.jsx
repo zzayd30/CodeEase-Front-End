@@ -3,10 +3,13 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { InView } from "react-intersection-observer";
-import Pic1 from "../assets/testimonial-1.jpg";
-import Pic2 from "../assets/testimonial-2.jpg";
-import Pic3 from "../assets/testimonial-3.jpg";
+import Pic1 from "../assets/img (1).jpg";
+import Pic2 from "../assets/img (2).jpg";
+import Pic3 from "../assets/testimonial-1.jpg";
 import { FaQuoteLeft } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee, faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
+
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 import { motion } from "framer-motion";
@@ -41,10 +44,10 @@ const Testimonial = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 2,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     pauseOnHover: false,
     responsive: [
       {
@@ -93,15 +96,18 @@ const Testimonial = () => {
               >
                 <Slider ref={sliderRef} {...settings} className="mt-5">
                   {testimonialsData.map((testimonial, index) => (
-                    <div key={index} className="p-5 ">
-                    
-                      <div className="bg-white gap-5 flex flex-col p-5 rounded-lg shadow-lg  w-full">
-                        <p className="text-lg flex">
-                            
-                        <FaQuoteLeft className="text-blue-500 text-9xl" />
-                            {testimonial.detail}
-                            </p>
-                        <div className="flex gap-5 items-center">
+                    <div key={index} className="px-5 pb-5 pt-0 relative">
+                      <div className="absolute"></div>
+                      <div className="bg-white gap-5 flex flex-col px-5 pb-5 rounded-lg shadow-lg text-center w-full">
+                        <p className="text-lg  text-start">
+                          {" "}
+                          <FontAwesomeIcon
+                            className="text-blue-500 mr-3 text-7xl top-2"
+                            icon={faQuoteLeft}
+                          />
+                          {testimonial.detail}
+                        </p>
+                        <div className="flex gap-10 items-center">
                           <img
                             className="rounded-full items-center h-16 w-16"
                             src={testimonial.pic}

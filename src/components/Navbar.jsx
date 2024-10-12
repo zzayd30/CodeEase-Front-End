@@ -6,6 +6,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const location = useLocation();
   let lastScrollTop = 0;
 
@@ -26,10 +27,16 @@ const Navbar = () => {
     }
   };
 
+  const handleResize = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -41,19 +48,22 @@ const Navbar = () => {
     return location.pathname === path ? " text-primary" : "";
   };
 
+  // Determine if the navbar should be fixed based on screen width
+  const isFixedNavbar = screenWidth > 1320;
+
   return (
     <div className="flex flex-col">
       <div
-        className={`py-4 px-5 sm:px-10  flex justify-between md:py-5 items-center lg:fixed w-full transition-all ${
+        className={`py-4 px-5 sm:px-10 flex justify-between md:py-5 items-center lg:fixed w-full transition-all ${
           isMenuOpen ? "border-b-2" : ""
         } lg:border-none duration-500 z-50 ${
-          isScrolled ? "bg-white" : "md:bg-transparent bg-white"
+          isScrolled || isFixedNavbar ? "bg-white" : "md:bg-transparent"
         } ${isVisible ? "top-0" : "-top-20"}`}
       >
         <div>
           <h1
             className={`font-bold text-primary cursor-pointer text-4xl ${
-              isScrolled ? "text-primary" : "text-primary lg:text-white"
+              isScrolled || isFixedNavbar  ? "text-primary" : "text-primary lg:text-white"
             }`}
           >
             ATechsole
@@ -62,38 +72,38 @@ const Navbar = () => {
 
         <div
           className={`lg:flex gap-5 hidden font-semibold ${
-            isScrolled ? "text-black" : "text-light"
+            isScrolled || isFixedNavbar ? "text-black" : "text-light"
           }`}
         >
           <Link
             to="/"
             className={`cursor-pointer ${
-              isScrolled ? "hover:text-primary duration-500 ease-in-out" : ""
-            }  ${isScrolled ? getLinkClass("/") : ""}`}
+              isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
+            } ${isScrolled || isFixedNavbar ? getLinkClass("/") : ""}`}
           >
             Home
           </Link>
           <Link
             to="/About"
             className={`cursor-pointer ${
-              isScrolled ? "hover:text-primary duration-500 ease-in-out" : ""
-            } ${isScrolled ? getLinkClass("/About") : ""}`}
+              isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
+            } ${isScrolled || isFixedNavbar ? getLinkClass("/About") : ""}`}
           >
             About
           </Link>
           <Link
             to="/Services"
             className={`cursor-pointer ${
-              isScrolled ? "hover:text-primary duration-500 ease-in-out" : ""
-            }${isScrolled ? getLinkClass("/Services") : ""}`}
+              isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
+            } ${isScrolled || isFixedNavbar ? getLinkClass("/Services") : ""}`}
           >
             Services
           </Link>
           <Link
             to="/Contact"
             className={`cursor-pointer ${
-              isScrolled ? "hover:text-primary duration-500 ease-in-out" : ""
-            } ${isScrolled ? getLinkClass("/Contact") : ""}`}
+              isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
+            } ${isScrolled || isFixedNavbar ? getLinkClass("/Contact") : ""}`}
           >
             Contact
           </Link>
@@ -103,7 +113,7 @@ const Navbar = () => {
           <Link
             to="/Call"
             className={`cursor-pointer rounded-full px-5 py-2 ${
-              isScrolled ? "bg-primary text-white" : "bg-white text-primary"
+              isScrolled || isFixedNavbar ? "bg-primary text-white" : "bg-white text-primary"
             }`}
           >
             Schedule a call
@@ -114,10 +124,10 @@ const Navbar = () => {
         <div className="lg:hidden">
           <button
             onClick={toggleMenu}
-            className={` border  border-gray-300 rounded-full p-2 outline-none focus:outline-none active:scale-95 transition-transform`}
+            className={`border border-gray-300 rounded-full p-2 outline-none focus:outline-none active:scale-95 transition-transform`}
           >
             {isMenuOpen ? (
-              <FiMenu className="text-2xl duration-500 ease-in-out rotate-90" />
+              <FiX className="text-2xl duration-500 ease-in-out rotate-90" />
             ) : (
               <FiMenu className="duration-500 ease-in-out text-2xl" />
             )}
@@ -127,14 +137,14 @@ const Navbar = () => {
 
       <div className="justify-center flex">
         <hr
-          className={`transition-all w-11/12  duration-500 ease-in-out ${
+          className={`transition-all w-11/12 duration-500 ease-in-out ${
             isMenuOpen ? "opacity-100" : "opacity-0"
           }`}
         />
       </div>
 
       <div
-        className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden bg-white flex flex-col items-start ml-5 font-semibold gap-5  ${
+        className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden bg-white flex flex-col items-start ml-5 font-semibold gap-5 ${
           isMenuOpen ? "h-[30vh] opacity-100" : "h-0 opacity-0"
         }`}
       >
@@ -158,7 +168,7 @@ const Navbar = () => {
         </Link>
         <Link
           to="/Services"
-          className={`cursor-pointer hover:text-primary duration-500 ease-in-out${getLinkClass(
+          className={`cursor-pointer hover:text-primary duration-500 ease-in-out ${getLinkClass(
             "/Services"
           )}`}
           onClick={() => setIsMenuOpen(false)}
