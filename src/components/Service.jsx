@@ -165,7 +165,7 @@ const Services = () => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 justify-center my-5 gap-2">
+      <div className="grid grid-cols-2 lg:grid-cols-4 justify-center my-5 gap-2">
         <button
           className={`px-4 duration-300 ease-in-out py-2 mx-2 ${
             activeCategory === "webDevelopment"
