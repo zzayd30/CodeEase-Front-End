@@ -6,9 +6,8 @@ import { InView } from "react-intersection-observer";
 import Pic1 from "../assets/img (1).jpg";
 import Pic2 from "../assets/img (2).jpg";
 import Pic3 from "../assets/testimonial-1.jpg";
-import { FaQuoteLeft } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
+import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
