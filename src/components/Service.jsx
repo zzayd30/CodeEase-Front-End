@@ -1,70 +1,214 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import ServiceCard from "./ServiceCard";
-import { IoDesktopSharp } from "react-icons/io5";
 import {
-  IoIosLaptop,
-  IoIosPhonePortrait,
-  IoIosTabletPortrait,
-  IoIosDesktop,
-} from "react-icons/io";
-
-import { IoDesktopOutline } from "react-icons/io5";
+  IoGlobeOutline,
+  IoPeopleOutline,
+  IoSyncCircleOutline,
+  IoSettingsSharp,
+} from "react-icons/io5";
+import {
+  FaShoppingCart,
+  FaChartLine,
+  FaCogs,
+  FaRobot,
+  FaMobileAlt,
+  FaCodeBranch,
+  FaShieldAlt,
+  FaLockOpen,
+  FaBug,
+  FaBuilding,
+} from "react-icons/fa";
 
 const Services = () => {
-  return (
-    <div className="container p-s">
-      <div>
-        <div className="text-center">
-          <p className="font-bold text-3xl">Services</p>
-          <p className="my-3">
-            We provide all services that can grow you business. our team is
-            availbale for your guidance 24/7. Here are some our services.
-          </p>
-        </div>
+  const [activeCategory, setActiveCategory] = useState("webDevelopment");
 
-        <div className="service-card">
+  const renderServiceCards = () => {
+    if (activeCategory === "webDevelopment") {
+      return (
+        <motion.div
+          key="webDevelopment"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          transition={{ duration: 1 }}
+          className="service-card"
+        >
           <ServiceCard
-            name="Web Design"
-            icon={IoIosDesktop}
-            desc="We design your website as per requirments."
+            name="Custom Website Design & Development"
+            icon={IoGlobeOutline}
+            desc="Tailored websites that reflect your brand's identity."
           />
           <ServiceCard
-            name="Web Development"
-            icon={IoIosLaptop}
-            desc="We develop your website as per requirments of your business"
+            name="E-commerce Solutions"
+            icon={FaShoppingCart}
+            desc="Building secure and scalable online stores."
           />
           <ServiceCard
-            name="App Design"
-            icon={IoIosPhonePortrait}
-            desc="We design you business App as per requirments."
+            name="CMS Solutions"
+            icon={FaCogs}
+            desc="Simplifying content updates with WordPress, Joomla, and custom CMS."
           />
           <ServiceCard
-            name="App Development"
-            icon={IoIosTabletPortrait}
-            desc="We develop your business App as per requirments."
+            name="SEO & Digital Marketing Integration"
+            icon={FaChartLine}
+            desc="Optimizing your website for search engines and digital marketing."
           />
           <ServiceCard
-            name="SEO"
-            icon={IoIosDesktop}
-            desc="We boost your business through SEO."
+            name="Maintenance & Support"
+            icon={IoSettingsSharp}
+            desc="Ongoing support to keep your website up-to-date and secure."
+          />
+        </motion.div>
+      );
+    } else if (activeCategory === "softwareDevelopment") {
+      return (
+        <motion.div
+          key="softwareDevelopment"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 50 }}
+          transition={{ duration: 0.5 }}
+          className="service-card"
+        >
+          <ServiceCard
+            name="Custom Software Solutions"
+            icon={FaCogs}
+            desc="Developing software to streamline your business processes."
           />
           <ServiceCard
-            name="Digital markeeting"
-            icon={IoIosLaptop}
-            desc="We make SEO of your page and business."
+            name="Enterprise Resource Planning (ERP)"
+            icon={FaBuilding}
+            desc="Integrating various business functions into a single system."
           />
           <ServiceCard
-            name="E-Commerce Solution"
-            icon={IoIosPhonePortrait}
-            desc="We provide best E-Commerce solution."
+            name="Customer Relationship Management (CRM)"
+            icon={IoPeopleOutline}
+            desc="Tools to manage customer interactions and data."
           />
           <ServiceCard
-            name="Cyber-Security"
-            icon={IoIosTabletPortrait}
-            desc="We provide best Cyber-security option to protect our client."
+            name="Automation Tools"
+            icon={FaRobot}
+            desc="Reducing manual work through automated solutions."
           />
-        </div>
+        </motion.div>
+      );
+    } else if (activeCategory === "appDevelopment") {
+      return (
+        <motion.div
+          key="appDevelopment"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 50 }}
+          transition={{ duration: 0.5 }}
+          className="service-card"
+        >
+          <ServiceCard
+            name="iOS & Android App Development"
+            icon={FaMobileAlt}
+            desc="Creating mobile apps for both platforms with seamless user experiences."
+          />
+          <ServiceCard
+            name="Cross-Platform Apps"
+            icon={FaCodeBranch}
+            desc="Using technologies like React Native to develop apps for multiple platforms."
+          />
+          <ServiceCard
+            name="App Maintenance & Updates"
+            icon={IoSyncCircleOutline}
+            desc="Keeping your app current with the latest features and security patches."
+          />
+        </motion.div>
+      );
+    } else if (activeCategory === "cyberSecurity") {
+      return (
+        <motion.div
+          key="cyberSecurity"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 50 }}
+          transition={{ duration: 0.5 }}
+          className="service-card"
+        >
+          <ServiceCard
+            name="Vulnerability Assessments & Penetration Testing"
+            icon={FaShieldAlt}
+            desc="Identifying and addressing potential security threats."
+          />
+          <ServiceCard
+            name="Ransomware Recovery"
+            icon={FaLockOpen}
+            desc="Specialized tools and strategies to recover from ransomware attacks."
+          />
+          <ServiceCard
+            name="Malware Analysis & Removal"
+            icon={FaBug}
+            desc="Protecting your systems from malicious software."
+          />
+          <ServiceCard
+            name="Security Training & Awareness"
+            icon={IoPeopleOutline}
+            desc="Educating your team on cybersecurity best practices."
+          />
+        </motion.div>
+      );
+    }
+  };
+
+  return (
+    <div className="container p-s text-center">
+      <div className="text-center">
+        <p className="font-bold text-3xl">Services</p>
+        <p className="my-3">
+          We provide services that can grow your business. Our team is available
+          for guidance 24/7. Here are some of our services.
+        </p>
       </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 justify-center my-5 gap-2">
+        <button
+          className={`px-4 duration-300 ease-in-out py-2 mx-2 ${
+            activeCategory === "webDevelopment"
+              ? "bg-primary text-white"
+              : "bg-gray-300"
+          }`}
+          onClick={() => setActiveCategory("webDevelopment")}
+        >
+          Web Development
+        </button>
+        <button
+          className={`px-4 duration-300 ease-in-out py-2 mx-2 ${
+            activeCategory === "softwareDevelopment"
+              ? "bg-primary text-white"
+              : "bg-gray-300"
+          }`}
+          onClick={() => setActiveCategory("softwareDevelopment")}
+        >
+          Software Development
+        </button>
+        <button
+          className={`px-4 duration-300 ease-in-out py-2 mx-2 ${
+            activeCategory === "appDevelopment"
+              ? "bg-primary text-white"
+              : "bg-gray-300"
+          }`}
+          onClick={() => setActiveCategory("appDevelopment")}
+        >
+          App Development
+        </button>
+        <button
+          className={`px-4 duration-300 ease-in-out py-2 mx-2 ${
+            activeCategory === "cyberSecurity"
+              ? "bg-primary text-white"
+              : "bg-gray-300"
+          }`}
+          onClick={() => setActiveCategory("cyberSecurity")}
+        >
+          Cybersecurity
+        </button>
+      </div>
+
+      {renderServiceCards()}
     </div>
   );
 };

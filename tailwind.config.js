@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        // primary: "rgba(22, 22, 156, 0.5)",
-        primary: "#155263",
+        primary: "rgba(22, 22, 156, 0.5)",
+        // primary: "#155263",
         light: "#EDF5FF",
         "over-light": "#f8f9fa",
         card: "#f2f2f2",
