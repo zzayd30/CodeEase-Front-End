@@ -1,8 +1,6 @@
 import React from "react";
-import User1 from "../assets/mustansar.jpg";
-import User2 from "../assets/ghazanfar.jpg";
-import User3 from "../assets/Attiq.jpg";
-import User4 from "../assets/sardar wali.jpg";
+import User1 from "../assets/my_pic.jpg";
+import User2 from "../assets/team-1.jpg";
 import TeamCard from "./TeamCard";
 const Team = () => {
   return (
@@ -15,19 +13,9 @@ const Team = () => {
             software development company
           </p>
         </div>
-        <div className="team-card  gap-3 ">
-          <TeamCard name="Mustansar Riaz" post="CEO & Founder" pic={User1} />
-          <TeamCard
-            name="Ghazanfar Riaz"
-            post="CEO & Digital Marketer"
-            pic={User2}
-          />
-          <TeamCard
-            name="Hafiz Attiq Rehman"
-            post="Web Developer"
-            pic={User3}
-          />
-          <TeamCard name="Sardar Wali Khan" post="Web Developer" pic={User4} />
+        <div className="team-card gap-3 ">
+          <TeamCard name="Muhammad Zaid" post="CEO" pic={User1} gitHub="https://github.com/zzayd30" linkedin = "https://www.linkedin.com/in/muhammad-zaid-latif-3488a9276/" />
+          <TeamCard name="Muaz Khalid" post="Head of Sweeper" pic={User2} gitHub="www.github.com"  linkedin="www.Linkedin.com"/>
         </div>
       </div>
     </div>

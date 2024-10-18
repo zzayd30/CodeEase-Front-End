@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaIdCard } from "react-icons/fa6";
 import { TiTick } from "react-icons/ti";
-import Process from '../assets/process.jpg'
+import Process from '../assets/pexels-edmond-dantes-4342126.jpg'
 const Work = () => {
   return (
     <div className="p-s ">
       <div className="container py-28 flex flex-col gap-10">
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col items-center lg:flex-row">
           <InView triggerOnce={true} threshold={0.01}>
             {({ inView, ref }) => (
               <motion.div
@@ -35,7 +35,7 @@ const Work = () => {
              
                 <div className="max-w-2xl mx-auto p-6">
                   <h1 className="text-start text-4xl font-bold mb-8">
-                    Three Simple Steps To Start Working With
+                    Three Simple Steps To Start Working With Us
                   </h1>
                   <ul className="relative space-y-12">
                     <div className="absolute left-6 top-0 w-px  h-77p-2 lg:h-77p bg-primary"></div>

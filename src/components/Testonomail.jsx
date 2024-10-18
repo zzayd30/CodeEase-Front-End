@@ -3,8 +3,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { InView } from "react-intersection-observer";
-import Pic1 from "../assets/img (1).jpg";
-import Pic2 from "../assets/img (2).jpg";
+import Pic1 from "../assets/team-2.jpg";
+import Pic2 from "../assets/testimonial-2.jpg";
 import Pic3 from "../assets/testimonial-1.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
@@ -17,21 +17,21 @@ const testimonialsData = [
   {
     pic: Pic1,
     detail:
-      "I was looking for professionals for my work then I found ATechSole that are professionals and very good behaviour.",
+      "I was looking for professionals for my software problems then I found CodeEase Solutions, they indeed are the solution to your software problems.",
     name: "Muhammad Tahir",
     position: "CEO of Al Syed Institute",
   },
   {
     pic: Pic2,
     detail:
-      "I am very happy to work with ATechSole. They are very committed and deliver in time.",
+      "I am very happy to work with CodeEase Solutions. They are very committed and deliver in time.",
     name: "Mussadaq Hussain",
     position: "CEO of The Grace Academy",
   },
   {
     pic: Pic3,
     detail:
-      "I am very gald to work with the professionals of ATechSole. They know how to work this is my first experience that was amazing",
+      "I am very gald to work with the professionals of CodeEase Solutions. They know how to work this is my first experience that was amazing",
     name: "Haram Fatima",
     position: "CEO of Bunzy Shop",
   },
@@ -101,7 +101,7 @@ const Testimonial = () => {
                         <p className="text-lg  text-start">
                           {" "}
                           <FontAwesomeIcon
-                            className="text-blue-500 mr-3 text-7xl top-2"
+                            className="text-[#8a8acd] mr-3 text-7xl top-2"
                             icon={faQuoteLeft}
                           />
                           {testimonial.detail}

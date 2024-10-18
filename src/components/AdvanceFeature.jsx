@@ -2,9 +2,9 @@ import React from "react";
 import { InView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
-import Pic1 from '../assets/overview-1.jpg'
-import Pic2 from '../assets/overview-2.jpg'
-import Pic3 from '../assets/overview-3.jpg'
+import Pic1 from '../assets/about-vision.jpg'
+import Pic2 from '../assets/slider-3.jpg'
+import Pic3 from '../assets/slider-2.jpg'
 const AdvanceFeature = () => {
   return (
     <div className="p-s bg-over-light">

@@ -1,6 +1,7 @@
 import React from "react";
 import Service from "../components/Service";
-import Portfolio from "../components/Portfolio";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import { useEffect } from "react";
 const Services = () => {
@@ -10,9 +11,10 @@ const Services = () => {
 
   return (
     <div>
+      <Navbar />
       <Hero />
       <Service />
-      <Portfolio />
+      <Footer />
     </div>
   );
 };

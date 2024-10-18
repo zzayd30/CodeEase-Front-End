@@ -7,7 +7,7 @@ import { InView } from "react-intersection-observer";
 
 const Offers = () => {
   return (
-    <div className="p-s flex flex-col lg:flex-row gap-10">
+    <div className="p-s flex flex-col lg:flex-row gap-10 bg-white">
       <div className="flex container flex-col lg:flex-row justify-center gap-10">
         <InView triggerOnce={true} threshold={0.01}>
           {({ inView, ref }) => (

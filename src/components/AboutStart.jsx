@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { InView } from "react-intersection-observer";
-import About_pic from '../assets/about.jpg'
+import About_pic from '../assets/about2.jpg'
 const AboutStart = () => {
   return (
     <div className="p-s bg-over-light">
@@ -37,7 +37,7 @@ const AboutStart = () => {
                     <div className="flex flex-col gap-3">
                       <p className="font-medium text-xl">24/7 Hours Support</p>
                       <p>
-                        ur developers are available for your support 24/7 Hours
+                        Our developers are available for your support 24/7 Hours
                       </p>
                     </div>
                   </div>

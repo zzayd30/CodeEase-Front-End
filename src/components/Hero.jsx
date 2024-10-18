@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Hero_pic from '../assets/hero.jpg'
+import Hero_pic from '../assets/christopher-gower-m_HRfLhgABo-unsplash.jpg'
 import { motion } from "framer-motion";
 const Hero = () => {
   return (
-    <div className="hero-back mx-auto    h-auto">
+    <div className="hero-back mx-auto h-auto">
       <div className=" gap-10 container pb-40 pt-10 md:pt-32 flex flex-col lg:flex-row ">
         <div className="flex lg:w-1/2 flex-col gap-10 justify-center">
           <motion.div
@@ -22,18 +21,7 @@ const Hero = () => {
               seamless efficiency to table
             </p>
           </motion.div>
-          <div className="flex justify-center items-center bg-white px-4 py-2 relative w-full rounded-full">
-            <input
-              type="email"
-              placeholder="Your Email"
-              className=" text-gray-500 py-2 relative bg-white rounded-full focus:outline-none w-full"
-            />
-            <button className="m-2 px-4 py-2 text-white bg-primary rounded-full  end-0 absolute">
-              Explore Your Solution
-            </button>
-          </div>
         </div>
-
         <div className=" w-full flex justify-center lg:w-1/2">
           <motion.div
             initial={{ scale: 0.2 }}

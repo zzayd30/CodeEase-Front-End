@@ -2,6 +2,8 @@ import React from "react";
 import Features from "../components/Features";
 import Offers from "../components/Offers";
 import Hero from "../components/Hero";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { useEffect } from "react";
 const Feature = () => {
 
@@ -11,9 +13,11 @@ const Feature = () => {
 
   return (
     <div>
+      <Navbar />
       <Hero />
       <Offers />
       <Features />
+      <Footer />
     </div>
   );
 };

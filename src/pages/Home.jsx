@@ -7,9 +7,9 @@ import AdvanceFeature from "../components/AdvanceFeature";
 import Work from "../components/Work";
 import { useEffect } from "react";
 import Testonomail from "../components/Testonomail";
-import Pic1 from '../assets/hero.jpg'
-import Pic2 from '../assets/hero.jpg'
-import Pic3 from '../assets/hero.jpg'
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -17,7 +17,8 @@ const Home = () => {
 
   return (
     <>
-      <div className="home">
+      <Navbar />
+      <div className="home bg-white">
         <Hero />
         <Offers />
         <Features />
@@ -25,6 +26,7 @@ const Home = () => {
         <Work />
         <Testonomail />
       </div>
+      <Footer />
     </>
   );
 };

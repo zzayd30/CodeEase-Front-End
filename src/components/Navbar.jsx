@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
@@ -8,11 +8,11 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const location = useLocation();
+  const navigate = useNavigate();
   let lastScrollTop = 0;
 
   const handleScroll = () => {
     const currentScrollTop = window.pageYOffset;
-
     if (currentScrollTop > lastScrollTop) {
       setIsVisible(false);
     } else {
@@ -54,56 +54,48 @@ const Navbar = () => {
   return (
     <div className="flex flex-col">
       <div
-        className={`py-4 px-5 sm:px-10 flex justify-between md:py-5 items-center lg:fixed w-full transition-all ${
-          isMenuOpen ? "border-b-2" : ""
-        } lg:border-none duration-500 z-50 ${
-          isScrolled || isFixedNavbar ? "bg-white" : "md:bg-transparent"
-        } ${isVisible ? "top-0" : "-top-20"}`}
+        className={`py-4 px-5 sm:px-10 flex justify-between md:py-5 items-center lg:fixed w-full transition-all ${isMenuOpen ? "border-b-2" : ""
+          } lg:border-none duration-500 z-50 ${isScrolled || isFixedNavbar ? "bg-white" : "md:bg-transparent"
+          } ${isVisible ? "top-0" : "-top-20"}`}
       >
-        <div>
+        <div onClick={() => navigate("/")}>
           <h1
-            className={`font-bold text-primary cursor-pointer text-4xl ${
-              isScrolled || isFixedNavbar  ? "text-primary" : "text-primary lg:text-white"
-            }`}
+            className={`font-bold text-primary cursor-pointer text-2xl ${isScrolled || isFixedNavbar ? "text-primary" : "text-primary lg:text-white"
+              }`}
           >
-            ATechsole
+            CodeEase Solutions
           </h1>
         </div>
 
         <div
-          className={`lg:flex gap-5 hidden font-semibold ${
-            isScrolled || isFixedNavbar ? "text-black" : "text-light"
-          }`}
+          className={`lg:flex gap-5 hidden font-semibold ${isScrolled || isFixedNavbar ? "text-black" : "text-light"
+            }`}
         >
           <Link
-            to="/"
-            className={`cursor-pointer ${
-              isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
-            } ${isScrolled || isFixedNavbar ? getLinkClass("/") : ""}`}
+            to="/Home"
+            className={`cursor-pointer ${isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
+              } ${isScrolled || isFixedNavbar ? getLinkClass("/") : ""}`}
           >
             Home
           </Link>
           <Link
             to="/About"
-            className={`cursor-pointer ${
-              isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
-            } ${isScrolled || isFixedNavbar ? getLinkClass("/About") : ""}`}
+            className={`cursor-pointer ${isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
+              } ${isScrolled || isFixedNavbar ? getLinkClass("/About") : ""}`}
           >
             About
           </Link>
           <Link
             to="/Services"
-            className={`cursor-pointer ${
-              isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
-            } ${isScrolled || isFixedNavbar ? getLinkClass("/Services") : ""}`}
+            className={`cursor-pointer ${isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
+              } ${isScrolled || isFixedNavbar ? getLinkClass("/Services") : ""}`}
           >
             Services
           </Link>
           <Link
             to="/Contact"
-            className={`cursor-pointer ${
-              isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
-            } ${isScrolled || isFixedNavbar ? getLinkClass("/Contact") : ""}`}
+            className={`cursor-pointer ${isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
+              } ${isScrolled || isFixedNavbar ? getLinkClass("/Contact") : ""}`}
           >
             Contact
           </Link>
@@ -111,16 +103,13 @@ const Navbar = () => {
 
         <div className="hidden lg:flex">
           <Link
-            to="/Call"
-            className={`cursor-pointer rounded-full px-5 py-2 ${
-              isScrolled || isFixedNavbar ? "bg-primary text-white" : "bg-white text-primary"
-            }`}
+            to="/Chat"
+            className={`cursor-pointer rounded-full px-5 py-2 ${isScrolled || isFixedNavbar ? "bg-primary text-white" : "bg-white text-primary  text-lg"
+              }`}
           >
-            Schedule a call
+            Chat With Us
           </Link>
         </div>
-
-        {/* Mobile menu button */}
         <div className="lg:hidden">
           <button
             onClick={toggleMenu}
@@ -137,21 +126,19 @@ const Navbar = () => {
 
       <div className="justify-center flex">
         <hr
-          className={`transition-all w-11/12 duration-500 ease-in-out ${
-            isMenuOpen ? "opacity-100" : "opacity-0"
-          }`}
+          className={`transition-all w-11/12 duration-500 ease-in-out ${isMenuOpen ? "opacity-100" : "opacity-0"
+            }`}
         />
       </div>
 
       <div
-        className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden bg-white flex flex-col items-start ml-5 font-semibold gap-5 ${
-          isMenuOpen ? "h-[30vh] opacity-100" : "h-0 opacity-0"
-        }`}
+        className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden bg-white flex flex-col items-start ml-5 font-semibold gap-5 ${isMenuOpen ? "h-[30vh] opacity-100" : "h-0 opacity-0"
+          }`}
       >
         <Link
-          to="/"
+          to="/Home"
           className={`cursor-pointer hover:text-primary duration-500 ease-in-out justify-start flex ${getLinkClass(
-            "/"
+            "/Home"
           )}`}
           onClick={() => setIsMenuOpen(false)}
         >

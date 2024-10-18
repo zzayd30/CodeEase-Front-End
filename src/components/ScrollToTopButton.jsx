@@ -42,7 +42,7 @@ const ScrollToTopButton = () => {
           onClick={scrollToTop}
           className={`fixed bottom-5 right-5 bg-blue-400 bg-opacity-70 text-white p-3 rounded-full shadow-lg transition-all ${
             isSlow ? "duration-1000 ease-in" : "duration-300 ease-out"
-          } hover:bg-blue-700 transform hover:scale-110`}
+          } hover:bg-[#8a8acd] transform hover:scale-110`}
           style={{ zIndex: 1000 }}
         >
           <FaArrowUp />
