@@ -101,7 +101,7 @@ const Testimonial = () => {
                         <p className="text-lg  text-start">
                           {" "}
                           <FontAwesomeIcon
-                            className="text-[#8a8acd] mr-3 text-7xl top-2"
+                            className="text-blue-500 mr-3 text-7xl top-2"
                             icon={faQuoteLeft}
                           />
                           {testimonial.detail}

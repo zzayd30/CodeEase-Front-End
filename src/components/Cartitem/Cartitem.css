@@ -1,0 +1,153 @@
+.cartitem {
+  margin: 100px 170px;
+}
+.cart-item-main {
+  display: grid;
+  pad: 20px 0px;
+  gap: 75px;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+
+  align-items: center;
+}
+.cartitem hr {
+  height: 3px;
+  background: #e2e2e2;
+  border: 0;
+}
+.cart-format {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  gap: 75px;
+  pad: 20px 0px;
+  font-size: 15px;
+  color: #454545;
+  font-weight: 500;
+}
+
+.cart-quantity {
+  color: #454545;
+  border: 1px solid #b0b0b0;
+  background: #e2e2e2;
+  padding: 10px 10px;
+  width: 40px;
+}
+.cart-icon {
+  height: 70px;
+}
+.cart-billing {
+  display: flex;
+  gap: 20px;
+  margin: 50px 0px;
+}
+.cart-down {
+  /* width: 60%; */
+  flex: 2;
+}
+.cart-totals {
+  display: flex;
+  justify-content: space-between;
+}
+.cart-proceed {
+  padding: 15px 20px;
+  color: white;
+  border: none;
+  font-size: 15px;
+  background: orangered;
+}
+.cart-promocode {
+  flex: 1;
+}
+
+.cart-promocode p {
+  color: #454545;
+}
+.cart-promo input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 20px 20px;
+  color: #454545;
+  font-weight: 600;
+  margin: 0px;
+  background-color: #e6e6e6;
+}
+.promo-btn {
+  margin: 0px;
+  padding: 20px 20px;
+  background: black;
+  border: none;
+  color: white;
+  margin-left: -10px;
+  cursor: pointer;
+}
+.cart-remove {
+  cursor: pointer;
+  margin-left: 25px;
+}
+@media (max-width: 1280px) {
+  .cartitem {
+    margin: 40px 120px;
+  }
+}
+@media (max-width: 890px) {
+  .cartitem {
+    margin: 40px 20px;
+  }
+  .cart-billing {
+    padding: 10px 0px;
+  }
+  .cart-down {
+    flex: 1;
+  }
+  .cart-format {
+    grid-template-columns: 0.5fr 3fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  }
+  .cart-promocode {
+    margin: auto;
+  }
+}
+
+@media (max-width: 690px) {
+  .cart-billing {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  .cart-down h2 {
+    font-size: 15px;
+  }
+
+  .cart-line {
+    display: none;
+  }
+  .cart-format {
+    grid-template-columns: 0.5fr 3fr 0.5fr;
+    gap: 10px;
+  }
+  .cart-item-main {
+    display: none;
+  }
+  .cart-totals {
+    font-size: 12px;
+  }
+  .cart-proceed {
+    font-size: 8px;
+    padding: 10px 15px;
+    /* margin: 10px auto; */
+  }
+  .cart-promocode {
+    font-size: 10px;
+    margin: 0px;
+  }
+  .cart-promo input {
+    font-size: 12px;
+    width: 150px;
+    padding: 10px;
+  }
+  .promo-btn {
+    font-size: 12px;
+    padding: 10px;
+  }
+}

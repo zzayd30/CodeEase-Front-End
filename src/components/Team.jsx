@@ -1,6 +1,6 @@
 import React from "react";
-import User1 from "../assets/my_pic.jpg";
-import User2 from "../assets/team-1.jpg";
+import User1 from "../assets/my_pic2.jpg";
+import User2 from "../assets/majo2.jpg";
 import TeamCard from "./TeamCard";
 const Team = () => {
   return (
@@ -15,7 +15,7 @@ const Team = () => {
         </div>
         <div className="team-card gap-3 ">
           <TeamCard name="Muhammad Zaid" post="CEO" pic={User1} gitHub="https://github.com/zzayd30" linkedin = "https://www.linkedin.com/in/muhammad-zaid-latif-3488a9276/" />
-          <TeamCard name="Muaz Khalid" post="Head of Sweeper" pic={User2} gitHub="www.github.com"  linkedin="www.Linkedin.com"/>
+          <TeamCard name="Muaz Khalid" post="Head of Sweeper" pic={User2} gitHub="https://github.com/muazkhalid936"  linkedin="https://www.linkedin.com/in/muaz-khalid-a8b8672b7/"/>
         </div>
       </div>
     </div>

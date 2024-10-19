@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
+import { FaCartShopping } from "react-icons/fa6";
+import { Bounce, toast, ToastContainer } from "react-toastify";
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,10 +58,10 @@ const Navbar = () => {
     <div className="flex flex-col">
       <div
         className={`py-4 px-5 sm:px-10 flex justify-between md:py-5 items-center lg:fixed w-full transition-all ${isMenuOpen ? "border-b-2" : ""
-          } lg:border-none duration-500 z-50 ${isScrolled || isFixedNavbar ? "bg-white" : "md:bg-transparent"
+          } lg:border-none duration-500 z-50 ${isScrolled || isFixedNavbar ? "bg-white border-black" : "md:bg-transparent"
           } ${isVisible ? "top-0" : "-top-20"}`}
       >
-        <div onClick={() => navigate("/")}>
+        <div onClick={() => navigate("/Home")}>
           <h1
             className={`font-bold text-primary cursor-pointer text-2xl ${isScrolled || isFixedNavbar ? "text-primary" : "text-primary lg:text-white"
               }`}
@@ -66,7 +69,6 @@ const Navbar = () => {
             CodeEase Solutions
           </h1>
         </div>
-
         <div
           className={`lg:flex gap-5 hidden font-semibold ${isScrolled || isFixedNavbar ? "text-black" : "text-light"
             }`}
@@ -74,7 +76,7 @@ const Navbar = () => {
           <Link
             to="/Home"
             className={`cursor-pointer ${isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
-              } ${isScrolled || isFixedNavbar ? getLinkClass("/") : ""}`}
+              } ${isScrolled || isFixedNavbar ? getLinkClass("/Home") : ""}`}
           >
             Home
           </Link>
@@ -101,13 +103,38 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="hidden lg:flex">
+        <div className="hidden lg:flex items-center">
           <Link
-            to="/Chat"
-            className={`cursor-pointer rounded-full px-5 py-2 ${isScrolled || isFixedNavbar ? "bg-primary text-white" : "bg-white text-primary  text-lg"
+            to="/Cart"
+            className={`cursor-pointer ${isScrolled || isFixedNavbar ? "text-[#8a8acd]" : "text-white  text-lg flex items-center justify-center"
               }`}
           >
-            Chat With Us
+            <FaCartShopping className="text-3xl" />
+
+          </Link>
+
+          <Link
+            // to="/"
+            className={`cursor-pointer font-semibold rounded-full ml-3 px-4 py-1 ${isScrolled || isFixedNavbar ? "bg-primary text-white" : "bg-white text-primary  text-lg"
+              }`}
+            onClick={() => {
+              toast.success("Logged Out Successful", {
+                position: "bottom-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
+              setTimeout(() => {
+                navigate('/');
+              }, 3000);
+            }}
+          >
+            Log Out
           </Link>
         </div>
         <div className="lg:hidden">
@@ -132,7 +159,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden bg-white flex flex-col items-start ml-5 font-semibold gap-5 ${isMenuOpen ? "h-[30vh] opacity-100" : "h-0 opacity-0"
+        className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden bg-white flex flex-col items-start ml-5 font-semibold gap-5 ${isMenuOpen ? "h-full opacity-100" : "h-0 opacity-0"
           }`}
       >
         <Link
@@ -171,7 +198,40 @@ const Navbar = () => {
         >
           Contact
         </Link>
+        <Link
+          to="/Cart"
+          className={`cursor-pointer hover:text-primary duration-500 ease-in-out ${getLinkClass(
+            "/Cart"
+          )}`}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Cart
+        </Link>
+        <Link
+          to="/"
+          className={`cursor-pointer hover:text-primary duration-500 ease-in-out ${getLinkClass(
+            "/"
+          )}`}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Log Out
+        </Link>
+
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+        className="toast-con"
+        transition={Bounce}
+      />
     </div>
   );
 };

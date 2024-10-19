@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Bounce, toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './LogIn.css'
 
 const LogIn = () => {
@@ -16,10 +18,33 @@ const LogIn = () => {
             .then(result => {
                 console.log(result)
                 if (result.data.type === "success") {
-                    navigate('/Home')
+                    toast.success("Login Successful", {
+                        position: "bottom-right",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                    setTimeout(() => {
+                        navigate('/Home');
+                    }, 3000);
                 }
                 else {
-                    alert(result.data.message)
+                    toast.error(result.data.message, {
+                        position: "bottom-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
                 }
             })
             .catch(err => console.log(err))
@@ -59,6 +84,20 @@ const LogIn = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover={false}
+                theme="light"
+                className="toast-con"
+                transition={Bounce}
+            />
         </>
     )
 }

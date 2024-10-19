@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Bounce, toast, ToastContainer } from "react-toastify";
 import "./Register.css"
 
 const Register = () => {
@@ -13,11 +14,23 @@ const Register = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3000/Register', { username, email, password})
+        axios.post('http://localhost:3000/Register', { username, email, password })
             .then(result => {
+                toast.success("Registration Successful", {
+                    position: "bottom-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
                 console.log(result)
-                navigate('/')
-
+                setTimeout(() => {
+                    navigate('/');
+                }, 3000);
             })
             .catch(err => console.log(err))
 
@@ -67,6 +80,20 @@ const Register = () => {
                     <p className='text-black mt-[10px]'>Already have an account?<NavLink to="/" className="register-link text-white hover:text-primary">&nbsp;Log In</NavLink></p>
                 </form>
             </div>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover={false}
+                theme="light"
+                className="toast-con"
+                transition={Bounce}
+            />
         </div>
     )
 }

@@ -10,10 +10,8 @@ import Contact from "./pages/Contact";
 import Call from "./pages/Call";
 import LogIn from "./components/LogIn";
 import Register from "./components/Register";
-import OverView from "./pages/OverView";
-import Feature from "./pages/Feature";
-import Edu from "./pages/Edu";
-
+import Cart from "./pages/Cart";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -29,6 +27,7 @@ const App = () => {
         <Route path="/Services" element={<Services />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Chat" element={<Call />} />
+        <Route path="/Cart" element={<Cart />} />
       </Routes>
       <ScrollToTopButton />
     </div>
