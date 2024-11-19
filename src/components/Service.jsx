@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ServiceCard from "./ServiceCard";
+import 'toastr/build/toastr.min.css';
+import $ from 'jquery';
+import toastr from 'toastr';
+
 import {
   IoGlobeOutline,
   IoPeopleOutline,
@@ -170,6 +174,16 @@ const Services = () => {
       );
     }
   };
+
+
+  const showSuccessToast = () => {
+    toastr.success('This is a success message!', 'Success', {
+      positionClass: 'toast-top-right',
+      closeButton: true,
+      progressBar: true,
+    });
+  };
+
 
   return (
     <div className="container p-s text-center">

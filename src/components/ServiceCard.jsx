@@ -1,5 +1,18 @@
 import React from "react";
+import 'toastr/build/toastr.min.css';
+import $ from 'jquery';
+import toastr from 'toastr';
+
 const ServiceCard = (params) => {
+
+  const showSuccessToast = () => {
+    toastr.success('Added to cart', 'Success', {
+      positionClass: 'toast-bottom-right',
+      closeButton: true,
+      progressBar: true,
+    });
+  };
+
   return (
     <>
       <div className="main_Card hover:scale-105 transition-transform duration-300">
@@ -15,7 +28,7 @@ const ServiceCard = (params) => {
           <div className="cart w-1/2">
             <button
               onClick={() => {
-                alert(params.name + " added to cart");
+                showSuccessToast()
               }}
               className="bg-white text-[#8a8acd] hover:text-white hover:bg-primary px-3 py-1 rounded-xl"
             >

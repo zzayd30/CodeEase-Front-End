@@ -1,6 +1,7 @@
 import React from "react";
-import User1 from "../assets/my_pic2.jpg";
+import User1 from "../assets/my_pic.jpg";
 import User2 from "../assets/majo2.jpg";
+
 import TeamCard from "./TeamCard";
 const Team = () => {
   return (

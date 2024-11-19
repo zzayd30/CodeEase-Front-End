@@ -17,8 +17,25 @@ const LogIn = () => {
         axios.post('http://localhost:3000/LogIn', { email, password })
             .then(result => {
                 console.log(result)
-                if (result.data.type === "success") {
-                    toast.success("Login Successful", {
+                if (result.data.type === "success" && result.data.admin === true) {
+                    toast.success("Admin Login Successful", {
+                        position: "bottom-right",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                    setTimeout(() => {
+                        navigate('/Admin');
+                    }, 3000);
+                }
+                else if (result.data.type === "success" && result.data.admin === false) {
+
+                    toast.success("User Login Successful", {
                         position: "bottom-right",
                         autoClose: 3000,
                         hideProgressBar: false,
