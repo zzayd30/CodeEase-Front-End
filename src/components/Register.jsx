@@ -9,12 +9,15 @@ import "./Register.css"
 const Register = () => {
     const [username, setUsername] = useState('');
     const [email, setemail] = useState('');
+    const [isTeam, setIsTeam] = useState(false);
     const [password, setPassword] = useState('');
+    const [team_type, setTeam_type] = useState("");
     const navigate = useNavigate();
+    console.log(team_type);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3000/Register', { username, email, password })
+        axios.post('http://localhost:3000/Register', { username, email, password, isTeam , team_type})
             .then(result => {
                 toast.success("Registration Successful", {
                     position: "bottom-right",
@@ -76,6 +79,26 @@ const Register = () => {
                             required
                         />
                     </div>
+                    <div className="input-container flex justify-start gap-3">
+                        <label>Team Member</label>
+                        <input type="checkbox" name="team" id="team" onClick={() => setIsTeam(!isTeam)} />
+                    </div>
+                    {
+                        isTeam &&
+                        <div className="input-container">
+                            <select
+                                className='input-field'
+                                value={team_type}
+                                onChange={(e) => setTeam_type(e.target.value)}
+                            >
+                                <option value="">Select Service Type</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="App Development">App Development</option>
+                                <option value="Cyber Security">Cyber Security</option>
+                                <option value="Software Development">Software Development</option>
+                            </select>
+                        </div>
+                    }
                     <button type="submit" className="login-btn text-primary hover:bg-primary">Register</button>
                     <p className='text-black mt-[10px]'>Already have an account?<NavLink to="/" className="register-link text-white hover:text-primary">&nbsp;Log In</NavLink></p>
                 </form>

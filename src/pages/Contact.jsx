@@ -1,45 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdLocationPin } from "react-icons/md";
 import { IoMdMail } from "react-icons/io";
-import Hero from '../components/Hero'
-import { useEffect } from "react";
+import Hero from '../components/Hero';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import axios from 'axios';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);  // To manage loading state
+  const [errorMessage, setErrorMessage] = useState("");  // To handle error messages
+  const [successMessage, setSuccessMessage] = useState(""); // For success feedback
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:3000/Sendmail', { name, email, subject, message })
-      .then(result => {
-        console.log(result)
-        if (result.data.type === "success" && result.data.admin === true) {
-          alert("Email sent Successfully.");
-          setName("");
-          setEmail("");
-          setSubject("");
-          setMessage("");
-        }
-        else {
-          alert(result.data.message)
-        }
-      })
-      .catch(err => console.log(err))
+    setLoading(true);  // Set loading to true when request starts
+    setErrorMessage(""); // Reset previous error message
 
+    // Prepare template parameters
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      subject: subject,
+      message: message,
+    };
+
+    // Send the email via EmailJS
+    emailjs.send(
+      'service_mji72wi',       // EmailJS service ID
+      'template_itpqrmd',      // EmailJS template ID
+      templateParams,          // Template parameters
+      'udq9XLuX-kA06VzUz'           // EmailJS user ID
+    )
+      .then((response) => {
+        setLoading(false); // Set loading to false after receiving response
+        setSuccessMessage("Email sent successfully!");
+        setName("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
+      })
+      .catch((error) => {
+        setLoading(false);
+        setErrorMessage("An error occurred while sending the email. Please try again.");
+        console.error(error);
+      });
   };
+
   return (
     <>
-    <Navbar />
+      <Navbar />
       <Hero />
       <div className="p-s ">
         <div className="container py-28 flex flex-col gap-10">
@@ -97,6 +117,7 @@ const Contact = () => {
                 </motion.div>
               )}
             </InView>
+
             <InView triggerOnce={true} threshold={0.01}>
               {({ inView, ref }) => (
                 <motion.div
@@ -107,7 +128,7 @@ const Contact = () => {
                   className="w-full lg:w-1/2"
                 >
                   <div className="py-20 lg:py-5">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                       <div className="flex gap-5 flex-col">
                         <div className="flex flex-col md:flex-row gap-5 md:gap-3">
                           <div className="relative w-full">
@@ -203,9 +224,17 @@ const Contact = () => {
                         </div>
                       </div>
 
+                      {/* Display success or error message */}
+                      {successMessage && <p className="text-green-500">{successMessage}</p>}
+                      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
 
-                      <p onClick={handleSubmit} className="text-white bg-primary  inline-block rounded-full px-10 py-3 border border-blue-500  ease-in-out duration-300  ring-gray-400 ring-opacity-50
-                    hover:ring-2 cursor-pointer my-3">Send Message</p>
+                      <button
+                        type="submit"
+                        className="text-white bg-primary inline-block rounded-full px-10 py-3 border border-blue-500 ease-in-out duration-300 ring-gray-400 ring-opacity-50
+                    hover:ring-2 cursor-pointer my-3"
+                      >
+                        {loading ? "Sending..." : "Send Message"}
+                      </button>
                     </form>
                   </div>
                 </motion.div>

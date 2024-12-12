@@ -101,6 +101,13 @@ const Navbar = () => {
           >
             Contact
           </Link>
+          <Link
+            to="/Orders"
+            className={`cursor-pointer ${isScrolled || isFixedNavbar ? "hover:text-primary duration-500 ease-in-out" : ""
+              } ${isScrolled || isFixedNavbar ? getLinkClass("/Orders") : ""}`}
+          >
+            My Orders
+          </Link>
         </div>
 
         <div className="hidden lg:flex items-center">
@@ -118,6 +125,7 @@ const Navbar = () => {
             className={`cursor-pointer font-semibold rounded-full ml-3 px-4 py-1 ${isScrolled || isFixedNavbar ? "bg-primary text-white" : "bg-white text-primary  text-lg"
               }`}
             onClick={() => {
+              localStorage.setItem("current-email","")
               toast.success("Logged Out Successful", {
                 position: "bottom-right",
                 autoClose: 3000,
@@ -206,6 +214,15 @@ const Navbar = () => {
           onClick={() => setIsMenuOpen(false)}
         >
           Cart
+        </Link>
+        <Link
+          to="/Orders"
+          className={`cursor-pointer hover:text-primary duration-500 ease-in-out ${getLinkClass(
+            "/Orders"
+          )}`}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          My Orders
         </Link>
         <Link
           to="/"

@@ -16,26 +16,19 @@ const LogIn = () => {
         event.preventDefault();
         axios.post('http://localhost:3000/LogIn', { email, password })
             .then(result => {
-                console.log(result)
-                if (result.data.type === "success" && result.data.admin === true) {
-                    toast.success("Admin Login Successful", {
-                        position: "bottom-right",
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                        transition: Bounce,
-                    });
-                    setTimeout(() => {
-                        navigate('/Admin');
-                    }, 3000);
-                }
-                else if (result.data.type === "success" && result.data.admin === false) {
+                console.log(result);
 
-                    toast.success("User Login Successful", {
+                if (result.data.type === "success") {
+                    console.log(result.data.email);
+                    localStorage.setItem("current-email", result.data.email);
+
+                    const successMessage = result.data.admin
+                        ? "Admin Login Successful"
+                        : result.data.isTeam
+                            ? "Team Member Login Successful"
+                            : "User Login Successful";
+
+                    toast.success(successMessage, {
                         position: "bottom-right",
                         autoClose: 3000,
                         hideProgressBar: false,
@@ -46,12 +39,21 @@ const LogIn = () => {
                         theme: "light",
                         transition: Bounce,
                     });
+
+                    const redirectPath = result.data.admin
+                        ? '/Admin'
+                        : result.data.isTeam
+                            ? '/Team'
+                            : '/Home';
+
                     setTimeout(() => {
-                        navigate('/Home');
+                        navigate(redirectPath);
                     }, 3000);
                 }
-                else {
-                    toast.error(result.data.message, {
+            })
+            .catch(err => {
+                if (err.response && err.response.data) {
+                    toast.error(err.response.data.message, {
                         position: "bottom-right",
                         autoClose: 2000,
                         hideProgressBar: false,
@@ -62,10 +64,10 @@ const LogIn = () => {
                         theme: "light",
                         transition: Bounce,
                     });
+                } else {
+                    console.error("Unexpected Error:", err);
                 }
-            })
-            .catch(err => console.log(err))
-
+            });
     };
 
     return (
