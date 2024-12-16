@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 const Cart = () => {
     const email = localStorage.getItem("current-email");
@@ -41,7 +42,7 @@ const Cart = () => {
 
             const data = await response.json();
             if (data.success) {
-                alert("Order successfully proceeded!");
+                toast.success("Order successfully proceeded!");
                 setCartItems(cartItems.filter(item => item.serviceName !== serviceName));
             } else {
                 alert("Failed to proceed with the order");

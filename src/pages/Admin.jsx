@@ -57,14 +57,13 @@ const Admin = () => {
                         ...prev,
                         [orderId]: true,
                     }));
-
-                    alert("Assigned successfully!");
+                    toast.success("Assigned successfully!");
                 } else {
-                    alert("Assignment failed. Please try again.");
+                    toast.error("Assignment failed. Please try again.")
                 }
             } catch (error) {
                 console.error("Error assigning member:", error);
-                alert("An error occurred while assigning the order.");
+                toast.error("An error occurred while assigning the order.");
             }
         }
     };
@@ -296,11 +295,9 @@ const Admin = () => {
         }, 2000);
     };
     useEffect(() => {
-        if (show === "order") {
-            fetchOrders();
-            fetchTeamMembers();
-            fetchServices();
-        }
+        fetchOrders();
+        fetchTeamMembers();
+        fetchServices();
     }, [show]);
 
     return (
